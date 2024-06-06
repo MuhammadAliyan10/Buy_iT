@@ -3,10 +3,11 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const User = require("../Models/User");
+const Auth = require("../MiddleWare/Auth");
 require("dotenv").config();
 
 router.post("/register", async (req, res) => {
-  const { username, email, password, fullName, phone } = req.body;
+  const { username, email, password, phoneNumber } = req.body;
 
   try {
     const existingUser = await User.findOne({
@@ -23,10 +24,7 @@ router.post("/register", async (req, res) => {
       username: username,
       email: email,
       password: hashedPassword,
-      profile: {
-        fullName: fullName,
-        phone: phone,
-      },
+      phoneNumber: phoneNumber,
     });
     await newUser.save();
     res.status(201).json(newUser);
@@ -49,6 +47,19 @@ router.post("/login", async (req, res) => {
     }
     const token = jwt.sign({ userID: user._id }, process.env.JWT_SECRET);
     res.status(200).json({ token: token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error." });
+  }
+});
+
+router.get("/getUserInfo", Auth, async (req, res) => {
+  try {
+    const user = req.user;
+    if (!user) {
+      return res.status(404).json({ message: "No user found." });
+    }
+    res.json(user);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error." });

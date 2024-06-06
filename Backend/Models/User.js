@@ -15,20 +15,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  profile: {
-    fullName: { type: String },
-    avatar: { type: String },
-    bio: { type: String },
-    location: { type: String },
-    phone: { type: String },
-    joined: { type: Date, default: Date.now },
+  phoneNumber: {
+    type: String,
+    required: true,
   },
-  products: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-    },
-  ],
+  totalPurchase: { type: String },
 });
 
 const User = mongoose.model("User", userSchema);
