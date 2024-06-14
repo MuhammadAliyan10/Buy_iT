@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../assets/Css/Products.css";
+import Rating from "./Rating";
 
 const SingleProduct = () => {
   const { productID } = useParams();
-  console.log(productID);
+
   const [product, setProduct] = useState({});
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const SingleProduct = () => {
       } catch (error) {}
     };
     fetchSingleProduct();
-  }, []);
+  }, [productID]);
   console.log(product);
   return (
     <div className="single__product">
@@ -33,11 +34,15 @@ const SingleProduct = () => {
               <div className="product__details">
                 <h3>{product.title}</h3>
                 <p>{product.description}</p>
+
                 <p>
                   <span>Price : </span>
                   {product.price} $
                 </p>
                 <p>Remaining stocks is {product.stock}</p>
+                <p>
+                  Rating : <Rating totalStars={5} rating={product.rating} />
+                </p>
                 <button>Add to card</button>
               </div>
             </div>
@@ -55,6 +60,7 @@ const SingleProduct = () => {
                   <div className="user__comment">
                     <h5>{review.reviewerName}</h5>
                     <p>{review.comment}</p>
+                    <Rating totalStars={5} rating={review.rating} />
                   </div>
                 </li>
               );

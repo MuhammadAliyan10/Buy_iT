@@ -1,9 +1,11 @@
 .products .card {
   width: 100%;
-  height: 50vh;
+  height: 55vh;
   margin-bottom: 2rem;
 }
-
+.categoryProducts {
+  margin-top: 8rem;
+}
 .card img {
   width: 100%;
   object-fit: contain;
@@ -26,7 +28,9 @@
   font-size: 15px;
 }
 .single__product {
-  margin-top: 8rem;
+  margin-top: 7rem;
+  width: 100%;
+  height: 80vh;
 }
 
 .reviews h3 {
@@ -45,4 +49,11 @@
 .reviews ul li .user__info {
   font-size: 16px;
   margin-right: 1rem;
+}
+.on {
+  color: gold;
+}
+
+.off {
+  color: lightgray;
 }

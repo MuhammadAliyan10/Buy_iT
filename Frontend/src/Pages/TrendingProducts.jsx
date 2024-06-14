@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/Css/Products.css";
+import Rating from "../Components/Rating";
 
 const TrendingProducts = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
   useEffect(() => {
     const fetchTrendingProducts = async () => {
-      const api = "https://dummyjson.com/products?limit=10";
+      const api = "https://dummyjson.com/products?limit=9";
       try {
         const res = await fetch(api);
         const data = await res.json();
@@ -37,6 +38,9 @@ const TrendingProducts = () => {
                       <p>
                         <span className="tag">Price : </span>
                         {product.price} $
+                      </p>
+                      <p>
+                        <Rating totalStars={5} rating={product.rating} />
                       </p>
                       <Link
                         to={`/singleProduct/${product.id}`}

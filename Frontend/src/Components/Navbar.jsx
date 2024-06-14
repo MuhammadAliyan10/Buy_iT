@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../assets/Css/Navbar.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../Redux/Features/ThemeSlice";
 import {
@@ -8,6 +8,7 @@ import {
   checkIsAuthenticated,
   signUpWithGoogle,
 } from "../Redux/Features/Auth/AuthSlice";
+import SearchRecommendation from "./SearchRecommendation";
 
 const Navbar = () => {
   const location = useLocation();
@@ -16,18 +17,22 @@ const Navbar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isLoggedIn);
   const mode = darkMode ? "dark" : "light";
   const [scrolled, setScrolled] = useState(false);
-  const [data, setData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    phoneNumber: "",
-  });
+  const [searchValue, setSearchValue] = useState("");
+  const [category, setCategory] = useState([]);
   useEffect(() => {
     dispatch(checkIsAuthenticated());
   }, [dispatch]);
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", mode);
   }, [mode]);
+  const navigate = useNavigate();
+
+  const handleCategoryChange = (event) => {
+    const selectedCategory = event.target.value;
+    if (selectedCategory) {
+      navigate(`/categoryProducts/${selectedCategory}`);
+    }
+  };
 
   const handleScroll = () => {
     if (window.scrollY > 20) {
@@ -42,13 +47,18 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const onInputChange = (e) => {
-    setData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }));
+  const handleSearchResult = () => {
+    navigate(`/searchProducts/${searchValue}`);
+    setSearchValue("");
   };
+  useEffect(() => {
+    const fetchCategory = async () => {
+      const res = await fetch("https://dummyjson.com/products/category-list");
+      const data = await res.json();
+      setCategory(data);
+    };
+    fetchCategory();
+  }, []);
 
   return (
     <div>
@@ -102,9 +112,9 @@ const Navbar = () => {
           }`}
         >
           <div className="container">
-            <a className="navbar-brand" href="#">
+            <Link to={"/"} className="navbar-brand" href="#">
               Urban
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -122,17 +132,36 @@ const Navbar = () => {
             >
               <form role="search" className="search__form">
                 <div className="input-group">
+                  <select onChange={handleCategoryChange}>
+                    <option>Category</option>
+                    {category &&
+                      category.map((category, index) => {
+                        return (
+                          <option value={category} id={index}>
+                            {category}
+                          </option>
+                        );
+                      })}
+                  </select>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Search Urban"
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
                   />
+                  <div className="recommendation">
+                    {searchValue.length > 3 && (
+                      <SearchRecommendation searchValue={searchValue} />
+                    )}
+                  </div>
                   <button
                     className="btn btn-outline-secondary"
                     type="button"
                     id="button-addon2"
+                    onClick={handleSearchResult}
                   >
                     <i className="fa-solid fa-magnifying-glass"></i>
                   </button>
@@ -140,9 +169,13 @@ const Navbar = () => {
               </form>
               <ul className="navbar-nav ms-auto me-4 mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <Link
+                    to={"/"}
+                    className="nav-link active"
+                    aria-current="page"
+                  >
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
@@ -173,15 +206,14 @@ const Navbar = () => {
                       <ul className="dropdown-menu">
                         <li>
                           <a className="dropdown-item" href="#">
-                            Profile
+                            <i class="fa-solid fa-user"></i>Profile
                           </a>
                         </li>
                         <li>
                           <a className="dropdown-item" href="#">
-                            Billing
+                            <i class="fa-solid fa-dollar-sign"></i>Billing
                           </a>
                         </li>
-                        <hr />
 
                         <li>
                           <a
@@ -189,17 +221,18 @@ const Navbar = () => {
                             href="#"
                             onClick={() => dispatch(handleLogOut())}
                           >
-                            LogOut
+                            <i class="fa-solid fa-right-from-bracket"></i>LogOut
                           </a>
                         </li>
                       </ul>
                     </li>
                     <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        aria-current="page"
-                        href="#"
-                      >
+                      <a className="nav-link" aria-current="page" href="#">
+                        <i class="fa-solid fa-bell"></i>
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" aria-current="page" href="#">
                         <i className="fa-solid fa-cart-shopping"></i>
                       </a>
                     </li>

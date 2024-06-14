@@ -88,11 +88,56 @@
   border-radius: 10px 0px 0px 10px;
   outline: none !important;
   box-shadow: none !important;
-  border: 1px sold #000;
+  border: 1px solid #000;
   width: 100%;
   padding: 6px 14px;
+  position: relative;
+}
+.recommendation {
+  position: absolute;
+  width: 82%;
+  border-radius: 0px 0px 4px 4px;
+  left: 15%;
+  background: linear-gradient(
+    90deg,
+    rgba(203, 210, 237, 1) 21%,
+    rgba(187, 145, 216, 1) 51%,
+    rgba(212, 212, 238, 1) 81%
+  );
+  top: 100%;
+}
+.recommendation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.recommendation ul li {
+  padding: 10px 15px;
+}
+.recommendation ul li a {
+  cursor: pointer;
+  &:hover {
+    color: red;
+  }
 }
 .search__button {
   border-radius: 0px 10px 10px 0px;
   padding: 10px;
+}
+.dropdown-item {
+  padding: 7px 21px;
+}
+.dropdown-item i {
+  color: var(--icon-color);
+  margin-right: 8px;
+}
+select {
+  border-radius: 10px 0px 0px 10px !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid #000 !important;
+  padding: 6px 14px;
+}
+.searchProducts {
+  margin-top: 7rem;
 }
