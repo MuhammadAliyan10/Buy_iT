@@ -42,12 +42,11 @@ const TrendingProducts = () => {
                       <p>
                         <Rating totalStars={5} rating={product.rating} />
                       </p>
-                      <Link
-                        to={`/singleProduct/${product.id}`}
-                        className="btn btn-primary"
-                      >
-                        Add to card
-                      </Link>
+                      <button>
+                        <Link to={`/singleProduct/${product.id}`}>
+                          Add to card
+                        </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

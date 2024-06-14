@@ -1,0 +1,15 @@
+.cards {
+  margin-top: 7rem;
+}
+.card__details {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.card__details li {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #000;
+  &:last-child {
+    border-bottom: none;
+  }
+}

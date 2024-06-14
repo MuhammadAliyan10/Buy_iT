@@ -57,3 +57,14 @@ body {
   height: 200vh;
   background: var(--background-color);
 }
+
+button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  transition: 0.3s;
+  &:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}

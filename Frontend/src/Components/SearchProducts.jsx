@@ -61,10 +61,7 @@ const SearchProducts = () => {
                         <p>
                           <Rating totalStars={5} rating={product.rating} />
                         </p>
-                        <Link
-                          to={`/singleProduct/${product.id}`}
-                          className="btn btn-primary"
-                        >
+                        <Link to={`/singleProduct/${product.id}`}>
                           Add to card
                         </Link>
                       </div>

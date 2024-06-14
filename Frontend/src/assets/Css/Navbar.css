@@ -141,3 +141,18 @@ select {
 .searchProducts {
   margin-top: 7rem;
 }
+.shop__icon {
+  position: relative;
+}
+.shop__icon i {
+  font-size: 28px;
+}
+.shop__icon p {
+  position: absolute;
+  z-index: 1;
+  font-size: 12px;
+  left: 22px;
+  top: 9px;
+  color: #fff;
+  margin: 0;
+}

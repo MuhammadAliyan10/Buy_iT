@@ -6,6 +6,7 @@ import SingleProduct from "./Components/SingleProduct";
 import Shop from "./Pages/Shop";
 import Category from "./Components/Category";
 import SearchProducts from "./Components/SearchProducts";
+import Card from "./Pages/Card";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/card" element={<Card />} />
           <Route path="/singleProduct/:productID" element={<SingleProduct />} />
           <Route
             path="/searchProducts/:searchValue"

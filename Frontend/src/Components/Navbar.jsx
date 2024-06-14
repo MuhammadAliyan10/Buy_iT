@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../assets/Css/Navbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleTheme } from "../Redux/Features/ThemeSlice";
+import { toggleTheme } from "../Redux/Features/Theme/ThemeSlice";
 import {
   handleLogOut,
   checkIsAuthenticated,
@@ -15,6 +15,9 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
   const isAuthenticated = useSelector((state) => state.auth.isLoggedIn);
+  const totalCardItems = useSelector(
+    (state) => state.product.card.totalCardItems
+  );
   const mode = darkMode ? "dark" : "light";
   const [scrolled, setScrolled] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -178,9 +181,9 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to={"/shop"}>
                     Shop
-                  </a>
+                  </Link>
                 </li>
                 {!isAuthenticated ? (
                   <button
@@ -227,14 +230,23 @@ const Navbar = () => {
                       </ul>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" aria-current="page" href="#">
+                      <a
+                        className="nav-link top__icons"
+                        aria-current="page"
+                        href="#"
+                      >
                         <i class="fa-solid fa-bell"></i>
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" aria-current="page" href="#">
+                      <Link
+                        className="nav-link top__icons shop__icon"
+                        aria-current="page"
+                        to={"/card"}
+                      >
                         <i className="fa-solid fa-cart-shopping"></i>
-                      </a>
+                        {totalCardItems > 0 && <p>{totalCardItems}</p>}
+                      </Link>
                     </li>
                   </>
                 )}
@@ -272,16 +284,10 @@ const Navbar = () => {
               </button>
             </div>
             <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" data-bs-dismiss="modal">
                 Close
               </button>
-              <button type="button" className="btn btn-primary">
-                Sign In
-              </button>
+              <button type="button">Sign In</button>
             </div>
           </div>
         </div>
