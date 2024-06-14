@@ -4,15 +4,32 @@
   --background-color: #000000;
   --heading-color: #ffb601;
   --text-color: #fff;
-  --navbar-bg: #000;
+  --icon-color: red;
+  --navbar-bg: linear-gradient(
+    90deg,
+    rgba(228, 226, 226, 1) 18%,
+    rgba(188, 186, 186, 1) 73%,
+    rgba(235, 235, 249, 1) 83%
+  );
 }
 [data-theme="light"] {
   --primary-color: #ffb601;
   --secondary-color: #272d33;
-  --background-color: #ffffff;
+  --background-color: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 9%,
+    rgba(244, 241, 241, 1) 50%,
+    rgba(237, 237, 240, 1) 86%
+  );
   --heading-color: #272d33;
   --text-color: #272d33;
-  --navbar-bg: #fff;
+  --icon-color: orange;
+  --navbar-bg: linear-gradient(
+    90deg,
+    rgba(203, 210, 237, 1) 21%,
+    rgba(187, 145, 216, 1) 51%,
+    rgba(212, 212, 238, 1) 81%
+  );
 }
 
 h1,
@@ -38,5 +55,5 @@ body {
   padding: 0;
   width: 100%;
   height: 200vh;
-  background-color: var(--background-color);
+  background: var(--background-color);
 }
