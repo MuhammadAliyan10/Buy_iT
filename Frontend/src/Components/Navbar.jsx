@@ -252,6 +252,23 @@ const Navbar = () => {
                   </>
                 )}
               </ul>
+              <div className="toggleTheme">
+                {darkMode ? (
+                  <i class="fa-solid fa-sun"></i>
+                ) : (
+                  <i class="fa-solid fa-moon"></i>
+                )}
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value={darkMode}
+                    role="switch"
+                    id="flexSwitchCheckDefault"
+                    onChange={() => dispatch(toggleTheme())}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </nav>

@@ -2,6 +2,7 @@
   width: 100%;
   height: 55vh;
   margin-bottom: 2rem;
+  background-color: var(--card-color);
 }
 .categoryProducts {
   margin-top: 8rem;
@@ -22,10 +23,12 @@
 .card .card-title {
   font-size: 17px;
   margin-bottom: 1rem;
+  color: var(--heading-color);
 }
 .tag {
   color: #000000;
   font-size: 15px;
+  color: var(--heading-color);
 }
 .single__product {
   margin-top: 7rem;

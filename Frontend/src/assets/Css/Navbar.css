@@ -26,13 +26,14 @@
 }
 .nav-link {
   padding: 18px 14px;
+  color: var(--text-color);
 }
 
 .scrolled .active {
   color: #03a9f4;
 }
 .active {
-  color: red;
+  color: var(--icon-color) !important;
 }
 .nav-link {
   padding: 10px 24px;
@@ -45,7 +46,9 @@
   padding: 0;
   list-style: none;
 }
-
+.navbar-brand {
+  color: var(--icon-color);
+}
 .top__header .top__links ul li {
   padding: 10px 14px;
 }
@@ -64,6 +67,7 @@
 }
 .top__header .location p {
   margin: 10px 0rem;
+  color: var(--text-color);
 }
 
 .search__box {
@@ -77,6 +81,7 @@
 }
 .top__title h4 {
   margin: 10px 0rem;
+  color: var(--heading-color);
 }
 
 .search__form {
@@ -155,4 +160,33 @@ select {
   top: 9px;
   color: #fff;
   margin: 0;
+}
+.toggleTheme {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: absolute;
+  top: 25%;
+  right: 2px;
+  background-color: var(--icon-color);
+  border-radius: 15px 0px 0px 15px;
+  padding: 3px 4px;
+}
+.toggleTheme i {
+  margin-right: 10px;
+  color: var(--navbar-bg);
+}
+.toggleTheme input {
+  width: 40px !important;
+  height: 20px;
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: none !important;
+}
+.form-check-input:checked {
+  background-color: black;
+  border-color: none !important;
+}
+.form-check-input:focus {
+  border-color: none !important;
 }

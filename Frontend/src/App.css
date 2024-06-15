@@ -4,26 +4,22 @@
   --background-color: #000000;
   --heading-color: #ffb601;
   --text-color: #fff;
-  --icon-color: red;
-  --navbar-bg: linear-gradient(
-    90deg,
-    rgba(228, 226, 226, 1) 18%,
-    rgba(188, 186, 186, 1) 73%,
-    rgba(235, 235, 249, 1) 83%
-  );
+  --icon-color: #ffb601;
+  --navbar-bg: #000000;
+  --card-color: #3a3939;
 }
 [data-theme="light"] {
   --primary-color: #ffb601;
   --secondary-color: #272d33;
   --background-color: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 1) 9%,
-    rgba(244, 241, 241, 1) 50%,
-    rgba(237, 237, 240, 1) 86%
+    rgba(252, 247, 255, 1) 17%,
+    rgba(227, 223, 231, 1) 51%,
+    rgba(250, 242, 255, 1) 81%
   );
   --heading-color: #272d33;
   --text-color: #272d33;
-  --icon-color: orange;
+  --icon-color: #272d33;
   --navbar-bg: linear-gradient(
     90deg,
     rgba(203, 210, 237, 1) 21%,
@@ -38,8 +34,11 @@ h3,
 h4,
 h5,
 h6,
-button,
 b {
+  font-family: "Geologica", sans-serif;
+  color: var(--text-color);
+}
+button {
   font-family: "Geologica", sans-serif;
 }
 
@@ -48,6 +47,10 @@ a,
 label {
   font-family: "Open Sans", sans-serif;
   text-decoration: none !important;
+  color: var(--text-color);
+}
+i {
+  color: var(--icon-color);
 }
 
 body {
