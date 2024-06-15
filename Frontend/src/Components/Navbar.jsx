@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../assets/Css/Navbar.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../Redux/Features/Theme/ThemeSlice";
 import {
@@ -11,7 +11,6 @@ import {
 import SearchRecommendation from "./SearchRecommendation";
 
 const Navbar = () => {
-  const location = useLocation();
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
   const isAuthenticated = useSelector((state) => state.auth.isLoggedIn);
@@ -51,8 +50,10 @@ const Navbar = () => {
     };
   }, []);
   const handleSearchResult = () => {
-    navigate(`/searchProducts/${searchValue}`);
-    setSearchValue("");
+    if (searchValue.length > 2) {
+      navigate(`/searchProducts/${searchValue}`);
+      setSearchValue("");
+    }
   };
   useEffect(() => {
     const fetchCategory = async () => {

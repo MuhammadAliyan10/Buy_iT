@@ -58,7 +58,12 @@ const Card = () => {
               <li>
                 <h4>Total Amount</h4>
                 {cardItems.length > 0 ? (
-                  <p>${cardItems.reduce((acc, item) => acc + item.price, 0)}</p>
+                  <p>
+                    $
+                    {cardItems
+                      .reduce((acc, item) => acc + item.price, 0)
+                      .toFixed(2)}
+                  </p>
                 ) : (
                   <p>No item in card</p>
                 )}

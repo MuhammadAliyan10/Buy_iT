@@ -4,6 +4,7 @@ import carousel2 from "../assets/Images/wooden.avif";
 import carousel3 from "../assets/Images/shose.jpeg";
 import "../assets/Css/Home.css";
 import TrendingProducts from "./TrendingProducts";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -58,39 +59,39 @@ const Home = () => {
               <div className="hot__catagories__content">
                 <h4>Cutlery</h4>
                 <p>
-                  We are giving the best prodoucts all around by our service.
+                  We are giving the best products all around by our service.
                 </p>
-                <a href="">
+                <Link to={`/categoryProducts/kitchen-accessories`}>
                   Go to Cutlery <i className="fa-solid fa-arrow-right"></i>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-sm-4">
               <div className="hot__catagories__content">
                 <h4>Cloths</h4>
                 <p>
-                  We are giving the best prodoucts all around by our service.
+                  We are giving the best products all around by our service.
                 </p>
-                <a href="">
+                <Link to={`/categoryProducts/mens-shirts`}>
                   Go to Cloths <i className="fa-solid fa-arrow-right"></i>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-sm-4">
               <div className="hot__catagories__content">
                 <h4>Shoes</h4>
                 <p>
-                  We are giving the best prodoucts all around by our service.
+                  We are giving the best products all around by our service.
                 </p>
-                <a href="">
+                <Link to={`/categoryProducts/mens-shoes`}>
                   Go to Shoes <i className="fa-solid fa-arrow-right"></i>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </div>
         <div className="trending__products">
-          <h2>Add to card</h2>
+          <h2>Trending Products</h2>
           <TrendingProducts />
         </div>
       </div>

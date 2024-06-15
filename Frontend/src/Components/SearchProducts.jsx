@@ -40,36 +40,41 @@ const SearchProducts = () => {
         <h4>Searched result for {searchValue}</h4>
 
         <div className="row">
-          {searchItems.length > 0 &&
-            searchItems.slice(0, 10).map((product) => {
-              return (
-                <div className="col-sm-4" key={product.id}>
-                  <div className="products">
-                    <div className="card">
-                      <img
-                        src={product.thumbnail}
-                        className="card-img-top"
-                        alt="..."
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">{product.title}</h5>
+          {searchItems.length > 0 ? (
+            <>
+              {searchItems.slice(0, 10).map((product) => {
+                return (
+                  <div className="col-sm-4" key={product.id}>
+                    <div className="products">
+                      <div className="card">
+                        <img
+                          src={product.thumbnail}
+                          className="card-img-top"
+                          alt="..."
+                        />
+                        <div className="card-body">
+                          <h5 className="card-title">{product.title}</h5>
 
-                        <p>
-                          <span className="tag">Price : </span>
-                          {product.price} $
-                        </p>
-                        <p>
-                          <Rating totalStars={5} rating={product.rating} />
-                        </p>
-                        <Link to={`/singleProduct/${product.id}`}>
-                          Add to card
-                        </Link>
+                          <p>
+                            <span className="tag">Price : </span>
+                            {product.price} $
+                          </p>
+                          <p>
+                            <Rating totalStars={5} rating={product.rating} />
+                          </p>
+                          <Link to={`/singleProduct/${product.id}`}>
+                            Add to card
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </>
+          ) : (
+            <p>No items match to {searchValue}</p>
+          )}
         </div>
       </div>
     </div>
